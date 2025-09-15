@@ -11,8 +11,6 @@ To develop a simple shell akin to Bash, and to deepen my understanding of proces
 ## Description
 
 Includes these built-in Linux commands:
-- `fork`
-- `exec`
 - `exit`
 - `wait`
 - `ls`
