@@ -2,7 +2,7 @@
 
 - [Goal](#goal)
 - [Description](#description)
-- [Compiling](#compiling)
+- [Running the shell](#running-the-shell)
 
 ## Goal
 
@@ -49,19 +49,25 @@ A command not followed by any of the special characters above are executed in th
 
 The `Ctrl + C` command terminates all foreground processes: when executing multiple commands in serial mode, the shell terminates the current command, ignores all subsequent commands in the series, and returns the prompt back to the user.
 
-## Compiling
+## Running the shell
 
-1. Navigate to the `src` directory
-2. Run:
 ```bash
+# Clone the repository
+git clone https://github.com/theantigone/simple-bash-shell.git
+cd simple-bash-shell
+
+# Navigate to the src directory
+cd src
+
+# Compile
 make
+
+# Run the shell
+./myshell
 ```
-to turn the source code into an executable
-3. Run:
-```bash
-./my_shell
-```
+
 > [!NOTE]
 > To delete the executable and object files, run:
 > ```bash
 > make clean
+> ```
