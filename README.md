@@ -1,14 +1,17 @@
 # Simple Bash Shell
 
-- [Goal](#goal)
-- [Description](#description)
-- [Running the shell](#running-the-shell)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Testing](#testing)
 
-## Goal
+A simple shell implemented in C to demonstrate process management concepts in Linux
 
-To develop a simple shell akin to Bash, and to deepen my understanding of process management in Linux.
+## Tech Stack
+- C
+- Make
 
-## Description
+## Features
 
 Includes these built-in Linux commands:
 - `exit`
@@ -47,21 +50,25 @@ A command not followed by any of the special characters above are executed in th
 
 The `Ctrl + C` command terminates all foreground processes: when executing multiple commands in serial mode, the shell terminates the current command, ignores all subsequent commands in the series, and returns the prompt back to the user.
 
-## Running the shell
+## Getting Started
 
+### Prerequisites
+- `gcc`
+- `make`
+
+### Installation & Usage
+1. Clone the repository:
 ```bash
-# Clone the repository
 git clone https://github.com/theantigone/simple-bash-shell.git
 cd simple-bash-shell
-
-# Navigate to the src directory
-cd src
-
-# Compile
+```
+2. Compile the program:
+```bash
 make
-
-# Run the shell
-./myshell
+```
+3. Run the shell:
+```bash
+./bin/my_shell
 ```
 
 > [!NOTE]
@@ -69,3 +76,10 @@ make
 > ```bash
 > make clean
 > ```
+
+## Testing
+To run the provided test suite:
+```bash
+cd tests
+./master.sh ../src/my_shell.c
+```

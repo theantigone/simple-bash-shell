@@ -62,16 +62,16 @@ char **tokenize(char *line) {
 int handle_cd(char **tokens) {
 	if (tokens[1] == NULL) {
 		fprintf(stderr, "Shell: Incorrect command\n");
-//printf("%s %s %s %s %s\n",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
+		//printf("%s %s %s %s %s\n",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
 		return -1;
 	} else {
 		if (chdir(tokens[1]) != 0) {
 			fprintf(stderr, "Shell: Incorrect command\n");
-//printf("%s %s %s %s %s\n",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
+			//printf("%s %s %s %s %s\n",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
 			return -1;
 		}
 	}
-//printf("%s %s %s %s %s\n",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
+	//printf("%s %s %s %s %s\n",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
 	return 0;
 }
 
@@ -129,10 +129,10 @@ pid_t execute_command(char **tokens, int is_background) {
 			printf("Shell: Background process started with PID %d\n", pid);
 		}
 	}
-//printf("%s %s %s %s %s\n",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
-//	if (strcmp(tokens[0], "cd") == 0) {
-//		tokens[0] == NULL;
-//	}
+	//printf("%s %s %s %s %s\n",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
+	//	if (strcmp(tokens[0], "cd") == 0) {
+	//		tokens[0] == NULL;
+	//	}
 	return pid; // Return the child's PID
 }
 
@@ -262,17 +262,17 @@ int main(int argc, char *argv[]) {
 		// --- Logic for handling &, &&, and &&& ---
 		i = 0;
 		while (tokens[i] != NULL) {
-//printf("%s %s %s %s %s",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
-//printf("BEGIN\n");
-//printf("%s, token\n",tokens[i]);
-//printf("%d, index number\n",i);
-//printf("%d, number of tokens in array\n",count);
+			//printf("%s %s %s %s %s",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
+			//printf("BEGIN\n");
+			//printf("%s, token\n",tokens[i]);
+			//printf("%d, index number\n",i);
+			//printf("%d, number of tokens in array\n",count);
 			int j = i;
 			while (tokens[j] != NULL && strcmp(tokens[j], "&") != 0 &&
 					strcmp(tokens[j], "&&") != 0 && strcmp(tokens[j], "&&&") != 0) {
 				j++;
-//printf("%d, index after &, &&, or NULL symbol\n",j);
-//printf("%s %s %s %s %s",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
+				//printf("%d, index after &, &&, or NULL symbol\n",j);
+				//printf("%s %s %s %s %s",tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
 			}
 
 			char *separator = tokens[j];
@@ -286,7 +286,7 @@ int main(int argc, char *argv[]) {
 					int status;
 					waitpid(pid, &status, 0); // Wait for the specific child
 				}
-//printf("END\n");
+				//printf("END\n");
 			} else if (strcmp(separator, "&") == 0) {
 				// Background Execution
 				execute_command(tokens + i, 1); // Execute in background (don't wait)

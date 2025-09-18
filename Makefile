@@ -7,31 +7,42 @@ CC = gcc
 #   -O2:   Optimize for performance (optional, but good for final builds)
 CFLAGS = -Wall -g -O2
 
-# Name of the executable
-TARGET = my_shell
+# Source directory
+SRCDIR = src
 
-# Source files
-SRC = my_shell.c
+# Object directory
+OBJDIR = obj
 
-# Object files (automatically generated from SRC)
-OBJ = $(SRC:.c=.o)
+# Binary directory
+BINDIR = bin
+
+# Find all .c files in the source directory
+SRC = $(wildcard $(SRCDIR)/*.c)
+
+# Create object file names from source file names
+OBJ = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRC))
+
+# Name of the final executable
+TARGET = $(BINDIR)/my_shell
 
 # Default target: build the executable
 all: $(TARGET)
 
 # Rule to build the executable
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
+	@mkdir -p $(BINDIR)
+	$(CC) $(CFLAGS) -o $@ $^
 
 # Rule to compile a .c file into a .o file
 #   $@:  The target file (the .o file)
 #   $<:  The first prerequisite (the .c file)
-%.o: %.c
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 # Clean up: remove object files and the executable
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -rf $(OBJDIR) $(BINDIR)
 
 # Phony targets (targets that are not actual files)
 .PHONY: all clean

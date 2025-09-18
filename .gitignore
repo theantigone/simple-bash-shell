@@ -1,1 +1,11 @@
 *.o
+/bin
+/obj
+tests/bash_output_cd.txt
+tests/bash_output_pwd.txt
+tests/part_a_student_output_cd.txt
+tests/part_a_student_output_pwd.txt
+tests/partb_test3.txt
+tests/partb_test4.txt
+tests/partbtests1.txt
+tests/sshell
